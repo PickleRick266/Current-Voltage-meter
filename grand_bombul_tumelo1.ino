@@ -2,12 +2,12 @@
 
 Adafruit_LiquidCrystal lcd(0);
 
-// Analogue input pins
+//analogue input pins
 const int voltagePin = A0;
 const int shuntPin = A1;
 
-// Resistor value for current calculation
-const float shuntResistor = 100.0; // ohms
+//resistor value for current calculation
+const float shuntResistor = 100.0;
 
 void setup() {
   lcd.begin(16, 2);
@@ -20,13 +20,13 @@ void loop() {
   int voltageReading = analogRead(voltagePin);
   int shuntReading = analogRead(shuntPin);
 
-  float inputVoltage = voltageReading * (5.0 / 1023.0);
+  float inputVoltage = voltageReading * (5.0 / 1023.0); //calculations for data
   float shuntVoltage = shuntReading * (5.0 / 1023.0);
 
   float currentAmps = shuntVoltage / shuntResistor;
   float currentMilliAmps = currentAmps * 1000.0;
 
-  lcd.setCursor(0, 0);
+  lcd.setCursor(0, 0); //display of datsa
   lcd.print("V: ");
   lcd.print(inputVoltage, 2);
   lcd.print(" V      ");
